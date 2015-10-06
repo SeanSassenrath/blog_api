@@ -1,0 +1,22 @@
+{
+  "name": "seansassenrath.io_blog_api",
+  "version": "1.0.0",
+  "description": "Blog API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeanSassenrath/blog_api.git"
+  },
+  "author": "Sean Sassenrath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanSassenrath/blog_api/issues"
+  },
+  "homepage": "https://github.com/SeanSassenrath/blog_api",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
