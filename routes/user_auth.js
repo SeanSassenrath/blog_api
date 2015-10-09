@@ -1,7 +1,7 @@
 var User = require('../models/user.js');
 var jwt = require('jsonwebtoken');
-var config = require('../../config');
-var authHelper = require('./user_auth_helpers.js')()
+var config = require('../config');
+var authHelper = require('./helpers/user_auth_helpers.js')()
 
 var secret = config.secret;
 
@@ -10,5 +10,7 @@ module.exports = function(app, express) {
 
   //test authHelper
   userApiRouter.get('/test', authHelper.authenticateUser)
+
+  return userApiRouter;
 
 }
