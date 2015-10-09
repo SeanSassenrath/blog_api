@@ -1,3 +1,4 @@
+'use strict';
 
 module.exports = function() {
 
@@ -5,9 +6,10 @@ module.exports = function() {
     authenticateUser: authenticateUser
   }
 
-  var authenticateUser = function(req, res) {
+  function authenticateUser(req, res) {
     // console.log(req.body.username);
     console.log('TEST')
+    // return "this"
 
   //   User.findOne({
   //     username: req.body.username

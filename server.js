@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
-var userApiRoutes = require('./routes/user_auth.js');
+var userApiRoutes = require('./routes/user_auth.js')(app, express);
 app.use('/api', userApiRoutes);
 
 app.listen(config.port);
