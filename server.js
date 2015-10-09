@@ -19,5 +19,8 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
+var userApiRoutes = require('./routes/user_auth.js');
+app.use('/api', userApiRoutes);
+
 app.listen(config.port);
 console.log('Blog API is spinning on port ', config.port);
