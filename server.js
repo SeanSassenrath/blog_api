@@ -1,4 +1,4 @@
-var express = require("express");
+  var express = require("express");
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -20,7 +20,10 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 
 var userApiRoutes = require('./routes/user_auth.js')(app, express);
-app.use('/api', userApiRoutes);
+app.use('/auth', userApiRoutes);
+
+// var postRoutes = require('./routes/blog_posts.js')(app, express);
+// app.use('/content');
 
 app.listen(config.port);
 console.log('Blog API is spinning on port ', config.port);

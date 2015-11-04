@@ -6,9 +6,10 @@ module.exports = function() {
     authenticateUser: authenticateUser
   }
 
-  function authenticateUser(req, res) {
+  function authenticateUser(req, res, next) {
     // console.log(req.body.username);
     console.log('TEST')
+    res.json({message: "Hello"})
     // return "this"
 
   //   User.findOne({
@@ -39,6 +40,7 @@ module.exports = function() {
   //       }
   //     }
   //   });
+    next();
   }
 
 }
