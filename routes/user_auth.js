@@ -10,7 +10,9 @@ module.exports = function(app, express) {
 
   //test authHelper
   // authRouter.get('/authenticate', authHelper.authenticateUser)
-  authRouter.post('/authenticate', function(req, res) {
+  authRouter.route("/verify")
+
+    .post(function(req, res) {
     console.log(req.body.username);
 
     User.findOne({username: req.body.username}).select('password').exec(function(err, user) {
@@ -42,26 +44,6 @@ module.exports = function(app, express) {
     })
   })
 
-  authRouter.use(function(req, res, next) {
-    console.log("Someone just came to my app")
-    var token = req.body.token || req.query.token || req.headers['x-access-token']
-
-    if (token) {
-      jwt.verify(token, secret, function(err, decoded) {
-        if (err) {
-          res.json({message: "Failed to authenticate token"})
-        } else {
-          req.decoded = decoded;
-          next();
-        }
-      })
-    } else {
-      return res.status(403).send({
-        message: "No token provided"
-      })
-    }
-  })
-
   authRouter.route("/users")
 
     .post(function(req, res) {
@@ -82,6 +64,26 @@ module.exports = function(app, express) {
         res.json(users);
       })
     })
+
+  authRouter.use(function(req, res, next) {
+    console.log("Someone just came to my app")
+    var token = req.body.token || req.query.token || req.headers['x-access-token']
+
+    if (token) {
+      jwt.verify(token, secret, function(err, decoded) {
+        if (err) {
+          res.json({message: "Failed to authenticate token"})
+        } else {
+          req.decoded = decoded;
+          next();
+        }
+      })
+    } else {
+      return res.status(403).send({
+        message: "No token provided"
+      })
+    }
+  })
 
   return authRouter;
 
